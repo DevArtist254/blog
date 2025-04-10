@@ -3,14 +3,30 @@
     {
       "title": "welcome to the blog",
       "body": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus hic cupiditate natus adipisci, explicabo magnam eaque molestiae, blanditiis fugiat iusto quisquam reiciendis laboriosam itaque laudantium quo placeat incidunt, nam labore!",
-      "id": 1,
-      "tags": ["webdev", "coding", "news"]
+      "id": "1",
+      "tags": [
+        "webdev",
+        "coding",
+        "news"
+      ]
     },
     {
       "title": "top 5 css tips",
       "body": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ducimus temporibus aliquam nemo accusantium numquam ipsa ipsam obcaecati in minus dignissimos?",
-      "id": 2,
-      "tags": ["css", "wbedev", "coding"]
+      "id": "2",
+      "tags": [
+        "css",
+        "wbedev",
+        "coding"
+      ]
+    },
+    {
+      "id": "d124",
+      "title": "asdas",
+      "body": "asdad",
+      "tags": [
+        "asdasd"
+      ]
     }
   ]
 }
