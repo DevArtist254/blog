@@ -14,7 +14,7 @@
 
 <script>
 import { ref } from 'vue';
-// import { useRouter } from 'vue-router';
+import { useRouter } from 'vue-router';
 
 export default {
     name: "CreateView",
@@ -24,7 +24,7 @@ export default {
         const tag = ref('');
         const tags = [];
 
-        // const router = useRouter();
+        const router = useRouter();
 
         const handleTagEntry = () => {
             if (!tags.includes(tag.value)) {
@@ -48,7 +48,7 @@ export default {
 
 
 
-                    if (res.ok) console.log("Send to home route");
+                    if (res.ok) router.push({ name: "home" });
 
                 } catch (error) {
                     console.log(error);
