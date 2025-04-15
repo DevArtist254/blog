@@ -13,6 +13,7 @@
 </template>
 
 <script>
+// import { projectFirestore } from '@/firebase/config';
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 
@@ -47,6 +48,7 @@ export default {
                     })
 
 
+                    // const res = await projectFirestore.collection('posts').add(post)
 
                     if (res.ok) router.push({ name: "home" });
 

@@ -17,6 +17,7 @@
 <script>
 import SpinnerComp from '@/components/SpinnerComp.vue';
 import getPost from '@/composables/getPost';
+// import { projectFirestore } from '@/firebase/config';
 // import { useRoute } from 'vue-router';
 
 export default {
@@ -28,6 +29,10 @@ export default {
         const { post, error, load } = getPost(props.id)
 
         load();
+
+        // const handleClick = async () => {
+        //     await projectFirestore.collection('posts').doc(props.id).delete()
+        // }
 
         return { post, error }
     }
