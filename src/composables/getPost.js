@@ -1,4 +1,5 @@
-// import { projectFirestore } from "@/firebase/config";
+import { projectFirestore } from "@/firebase/config";
+import { doc, getDoc } from "firebase/firestore";
 import { ref } from "vue";
 
 const getPost = (id) => {
@@ -7,23 +8,23 @@ const getPost = (id) => {
 
   const load = async () => {
     try {
-      await new Promise((resolve) => {
-        setTimeout(resolve, 2000);
-      });
+      // await new Promise((resolve) => {
+      //   setTimeout(resolve, 2000);
+      // });
 
-      const data = await fetch(`http://localhost:3000/posts/${id}`);
+      // const data = await fetch(`http://localhost:3000/posts/${id}`);
 
-      if (!data.ok) throw new Error("no data available");
+      // if (!data.ok) throw new Error("no data available");
 
-      post.value = await data.json();
+      // post.value = await data.json();
 
-      /*
-      let res = await projectFirestore.collection("posts").doc(id).get();
+      let docRef = doc(projectFirestore, "posts", `${id}`);
 
-      if (!res.exists) throw Error("Does not exist");
+      const docSnap = await getDoc(docRef);
 
-      post.value = { ...res.data(), id: res.id };
-      */
+      if (!docSnap.exists()) throw Error("Does not exist");
+
+      post.value = { ...docSnap.data(), id: docSnap.id };
     } catch (err) {
       error.value = err.message;
     }

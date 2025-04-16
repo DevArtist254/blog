@@ -13,7 +13,8 @@
 </template>
 
 <script>
-// import { projectFirestore } from '@/firebase/config';
+import { projectFirestore } from '@/firebase/config';
+import { addDoc, collection } from 'firebase/firestore';
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 
@@ -41,16 +42,15 @@ export default {
 
             async function submitPost() {
                 try {
-                    const res = await fetch('http://localhost:3000/posts', {
-                        method: 'POST',
-                        headers: { "Content-Type": 'application/json' },
-                        body: JSON.stringify(post)
-                    })
+                    // const res = await fetch('http://localhost:3000/posts', {
+                    //     method: 'POST',
+                    //     headers: { "Content-Type": 'application/json' },
+                    //     body: JSON.stringify(post)
+                    // })
 
+                    await addDoc(collection(projectFirestore, 'posts'), post)
 
-                    // const res = await projectFirestore.collection('posts').add(post)
-
-                    if (res.ok) router.push({ name: "home" });
+                    router.push({ name: "home" });
 
                 } catch (error) {
                     console.log(error);
