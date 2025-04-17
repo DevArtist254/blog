@@ -14,7 +14,7 @@
 
 <script>
 import { projectFirestore } from '@/firebase/config';
-import { addDoc, collection } from 'firebase/firestore';
+import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 
@@ -48,7 +48,10 @@ export default {
                     //     body: JSON.stringify(post)
                     // })
 
-                    await addDoc(collection(projectFirestore, 'posts'), post)
+                    await addDoc(collection(projectFirestore, 'posts'), {
+                        ...post,
+                        createAt: serverTimestamp()
+                    })
 
                     router.push({ name: "home" });
 

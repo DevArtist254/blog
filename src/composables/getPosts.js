@@ -1,5 +1,5 @@
 import { projectFirestore } from "@/firebase/config";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, orderBy } from "firebase/firestore";
 import { ref } from "vue";
 
 const getPosts = () => {
@@ -19,7 +19,10 @@ const getPosts = () => {
       // posts.value = await data.json();
 
       //GET THE COLLECTION AND CONNECTION = REF
-      const res = await getDocs(collection(projectFirestore, "posts"));
+      const res = await getDocs(
+        collection(projectFirestore, "posts"),
+        orderBy("createdAt", "asc")
+      );
 
       // map the returned value onto the post
       posts.value = res.docs.map((doc) => {
